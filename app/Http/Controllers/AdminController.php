@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
@@ -14,9 +15,12 @@ class AdminController extends Controller
 
     public function index()
     {
-        return response()->json([
-            'message' => 'Admin Interface',
-        ]);
+        if (Gate::allows('admin')){
+            return response()->json([
+                'message' => 'Admin Interface',
+            ]);
+        }
+        return redirect()->route('welcome');
     }
 
     public function update(User $user, $role, $order)

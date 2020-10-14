@@ -22,7 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'Rcheck:admin'], function(){
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/{user}/{role}/{order}', 'AdminController@update');
-    
 });
 
 Route::group(['middleware' => 'Rcheck:modérateur'], function(){

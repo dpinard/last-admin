@@ -43,4 +43,11 @@ class User extends Authenticatable
         return $this->belongsToMany('\App\Role', 'role_users');
     }
 
+    public function hasRole($permission)
+    {
+        $t = auth()->user()->roles->contains('name', $permission);
+        return ($t)
+            ? true
+            : false;
+    }
 }
