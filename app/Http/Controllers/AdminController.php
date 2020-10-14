@@ -29,4 +29,8 @@ class AdminController extends Controller
             ? $user->roles()->attach($role)
             : $user->roles()->detach($role);
     }
+
+    public function test() {
+        dd(auth()->user()->roles());
+    }
 }

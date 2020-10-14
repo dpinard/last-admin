@@ -45,8 +45,7 @@ class User extends Authenticatable
 
     public function hasRole($permission)
     {
-        $t = auth()->user()->roles->contains('name', $permission);
-        return ($t)
+        return (auth()->user()->roles->contains('name', $permission))
             ? true
             : false;
     }
